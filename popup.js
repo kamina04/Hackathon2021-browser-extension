@@ -2,11 +2,7 @@ let simplifiedEng = document.getElementById("Words");
 let idioms = document.getElementById("Idioms");
 let transcript = document.getElementById("Transcript");
 
-let test = document.getElementById("testing");
-
-console.log('test');
-
-test.addEventListener("click", async () => {  
+  idioms.addEventListener("change", async () => {  
     let [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
     chrome.scripting.executeScript({
         target: { tabId: tab.id },
