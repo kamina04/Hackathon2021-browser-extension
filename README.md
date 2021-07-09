@@ -2,5 +2,5 @@
 
 command to convert css to sass: 
 ``
-sass popup.scss build/popup.css
+sass --watch popup.scss build/popup.css
 ``

@@ -1,3 +1,17 @@
+body {
+    width: 350px;
+    height: 200px;
+}
+
+
+@font-face {
+    font-family: "BBCReithSans";
+    src: url("css/fonts/Harabara.eot");
+    src:
+    url("/fonts/BBCReithSans_W_Bd.woff") format("woff"),
+    }
+
+//styling for switches/sliders
 .switch {
     position: relative;
     display: inline-block;
@@ -47,11 +61,37 @@
     transform: translateX(26px);
   }
   
-  /* Rounded sliders */
   .slider.round {
     border-radius: 34px;
   }
   
   .slider.round:before {
     border-radius: 50%;
+  }
+
+  //container of sliders - think of them like of blocks which has something inside
+  .content_container {
+    display: flex;
+    flex-direction: column;
+    justify-content:center;
+    align-content: center;
+    position: relative;
+    top:40%;
+  }
+
+
+//container of each slider
+  .slider_holder {
+      width: 200px;
+      height: 50px;
+      position: relative;
+      left:20%;
+      .switch {
+          float:right;
+      }
+      .title {
+        font-style: normal;
+        font-size: 15px;
+        font-family: "BBCReithSans";
+    }
   }
