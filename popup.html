@@ -4,29 +4,33 @@
         <link rel="stylesheet" href="build/popup.css">
     </head>
     <body>
-        <p>Prototype of chrome extension for iPlayer</p>
         <div class="content_container">
+            <p>Prototype of chrome extension for iPlayer</p>
             <div class="slider_holder"> 
                 <span class="title">Transcript</span>
                 <label class="switch">
-                    <input type="checkbox">
+                    <input type="checkbox" id="Transcript">
                     <span class="slider round"></span>
                   </label>
             </div>
             <div class="slider_holder"> 
                 <span class="title">Idioms</span>
                 <label class="switch">
-                    <input type="checkbox">
+                    <input type="checkbox" id="Idioms">
                     <span class="slider round"></span>
                   </label>
             </div>
-            <div class="slider_holder"> 
+            <!-- <div class="slider_holder"> 
                 <span class="title">Difficult words</span>
                 <label class="switch">
-                    <input type="checkbox">
+                    <input type="checkbox" id="Words">
                     <span class="slider round"></span>
                   </label>
-            </div>
+            </div> -->
+            <button id="testing">
+                Yolo
+            </button>
+            <script src="popup.js"></script>
         </div>
     </body>
 </html>
