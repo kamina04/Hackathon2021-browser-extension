@@ -27,7 +27,9 @@ transcript.addEventListener("change", async () => {
 });
 
 function popUp() {
-    return console.log('works');
+    const dialogBox = document.getElementById("dialogBox");
+    return dialogBox.style.visibility = 
+    (dialogBox.style.visibility != "visible") ? "visible" : "hidden";
 }
 
 runSimplifiedEng = async () => {
