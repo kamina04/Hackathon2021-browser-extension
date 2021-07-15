@@ -26,14 +26,19 @@ transcript.addEventListener("change", async () => {
     });
 });
 
-printValue = () => {
-    return console.log('here');
+function popUp() {
+    return console.log('works');
 }
 
-runSimplifiedEng = () => {
-    fetch(chrome.runtime.getURL('/template.html')).then(r => r.text()).then(html => {
-        document.body.insertAdjacentHTML('beforeend', html);
-        // not using innerHTML as it would break js event listeners of the page
-      });
+runSimplifiedEng = async () => {
+    document.querySelector(".myDiv").addEventListener("click", e => console.log(event.target));
 }
 
+function fetchData() {
+    return fetch('http://localhost:5000')
+        .then(response => response.xml())
+        .then(
+            console.log(response)
+        )
+        .catch(error => console.error(error));
+}

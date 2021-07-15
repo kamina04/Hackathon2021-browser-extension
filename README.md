@@ -3,6 +3,7 @@
 command to convert css to sass: 
 ``
 sass --watch popup.scss build/popup.css
+sass --watch icon.scss build/icon.css
 ``
 
 
