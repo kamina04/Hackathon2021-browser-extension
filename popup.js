@@ -75,3 +75,20 @@ function runTranscript() {
     // videoIPlayer[0].append(bbc_button);
     archives[0].append(div);
 }
+
+
+
+
+
+async function popUp() {
+    const dialogBox = document.getElementById("dialogBox");
+    dialogBox.style.visibility =
+        (dialogBox.style.visibility != "visible") ? "visible" : "hidden";
+    let url = 'http://localhost:5000/translated-subtitles';
+    let response = await fetch(url);
+    let data = await response.text();
+
+    const parser = new DOMParser();
+    const xml = parser.parseFromString(data, "application/xml");
+    dialogBox.innerText = xml.documentElement.textContent;
+}
