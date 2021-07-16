@@ -25,46 +25,53 @@ simplifiedEng.addEventListener("change", async () => {
         function: runSimplifiedEng,
     });
 });
-
-function popUp() {
-    // const dialogBox = document.getElementById("dialogBox");
-    // return dialogBox.style.visibility = 
-    // (dialogBox.style.visibility != "visible") ? "visible" : "hidden";
-    console.log('works');
-}
-
-function runTranscript () {
-    // const div = document.createElement("div");
-    // document.body.appendChild(div);
+function runTranscript() {
     const videoIPlayer = document.getElementsByClassName("hero-player"); //works for iPlayer when video is on
 
     const archives = document.getElementsByClassName("gel-layout__item timeline__buttons");
 
+
+    //container
     const div = document.createElement("div");
-    div.classList.add('container_button');
+    div.classList.add('main_container');
+    //container 2
+    const div2 = document.createElement("div");
+    div2.classList.add('container_button');
+
+    //button and call the data
     const bbc_button = document.createElement('button');
     bbc_button.type = 'button';
-    bbc_button.innerHTML = 'Press me';    
-    bbc_button.onclick = function(req, response) { 
+    bbc_button.innerHTML = 'Press me';
 
-        fetch('http://localhost:5000')
-        .then(response => response.xml())
-        .catch(error => console.error(error));
-     };
-    
-    
+    //dialog box
+    const dialogBox = document.createElement("div");
+    dialogBox.type = "div";
+    dialogBox.classList.add("dialogBox_container");
+    const text_p = document.createElement("p");
+    // text_p.innerHTML = "nanananananana"
+    dialogBox.append(text_p);
+
+
+
+    div.append(div2);
+    div2.append(bbc_button);
+    div.append(dialogBox);
+
+    bbc_button.onclick = async function () {
+        let url = 'http://localhost:5000/translated-subtitles';
+        let response = await fetch(url);
+        let data = await response.text();
+        // console.log(data);
+
+        const parser = new DOMParser();
+        const xml = parser.parseFromString(data, "application/xml");
+        console.log(xml.documentElement.textContent);
+        dialogBox.style.visibility =
+            (dialogBox.style.visibility != "visible") ? "visible" : "hidden";
+        text_p.innerText = xml.documentElement.textContent;
+    };
+
+
     // videoIPlayer[0].append(bbc_button);
-    archives[0].append(bbc_button);
-}
-
-runSimplifiedEng = async () => {
-}
-
-function fetchData() {
-    return fetch('http://localhost:5000')
-        .then(response => response.xml())
-        .then(
-            console.log(response)
-        )
-        .catch(error => console.error(error));
+    archives[0].append(div);
 }
